@@ -1,3 +1,31 @@
 page-home {
+    .toolbar-md-secondary .toolbar-title-md {
+        color: #393E46;
+    }
 
+    .list-md .item-block .item-inner {
+        border-bottom: 1px solid #08C299;
+    }
+
+    .total {
+        color: #08C299;
+    }
+
+    .list-md .item-input:last-child {
+        border-bottom: 1px solid #393E46;
+        background-color: #08C299;
+    }
+
+    .text-input-md {
+        margin: 13px 8px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+        color: #393E46;
+    }
+
+    ion-item-sliding .item {
+        position: static;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
 }

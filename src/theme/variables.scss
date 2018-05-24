@@ -34,11 +34,11 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #393E46,
+  secondary:  #08C299,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #EEEEEE,
+  dark:       #232931
 );
 
 
@@ -71,6 +71,21 @@ $colors: (
 // default are overridden.
 
 @import "ionic.theme.default";
+
+
+$toolbar-background: map-get($colors, primary);
+$list-background-color: map-get($colors, light);
+$background-color: map-get($colors, light);
+$toolbar-text-color: map-get($colors, secondary);
+
+$toolbar-ios-title-text-color: map-get( $colors, secondary );
+$toolbar-md-title-text-color: map-get( $colors, secondary );
+$toolbar-wp-title-text-color: map-get( $colors, secondary );
+
+$footer-ios-title-text-color: map-get( $colors, primary );
+$footer-md-title-text-color: map-get( $colors, primary );
+$footer-wp-title-text-color: map-get( $colors, primary );
+
 
 
 // Ionicons

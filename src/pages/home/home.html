@@ -1,14 +1,47 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="add()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="limparLista()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
       Ionic Blank
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content no-padding>
+  <ion-list no-padding>
+    <ion-item-sliding *ngFor="let produto of produtos">
+      <ion-item>
+        <h1>{{produto.descricao}}</h1>
+        <p>Unitário: {{produto.valor | currency:'R$' }}</p>
+        <p class="total" item-end color="secondary">{{produto.valor * produto.quantidade | currency:'R$' }}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)="itemSelected(produto)" large>
+          <ion-icon name="information-circle"></ion-icon>Detalhes
+        </button>
+
+        <button ion-button color="danger" (click)="remove(produto)" large>
+          <ion-icon name="trash"></ion-icon>Remover
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title color="primary">
+      Total: {{valorTotal | currency:'R$'}}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
