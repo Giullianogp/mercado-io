@@ -24,22 +24,16 @@
       <div padding-horizontal>
         <div class="form-error">{{loginError}}</div>
   
-        <button ion-button full type="submit" [disabled]="!loginForm.valid" color="secondary" >Entrar</button>
-        <!-- <div class="login-footer">
-          <p>
-            <a href="#">Forgot password?</a>
-            If you're a new user, please sign up.
-          </p>
-        </div> -->
-  
+        <button ion-button full type="submit" *ngIf="buttonVisible" [disabled]="!loginForm.valid" color="secondary" >Entrar</button>
+        
         <ion-list>
   
-          <button ion-button icon-left block clear (click)="loginWithGoogle()">
+          <button ion-button icon-left block clear *ngIf="buttonVisible" (click)="loginWithGoogle()">
             <ion-icon name="logo-google"></ion-icon>
             Login com Google
           </button>
   
-          <button ion-button icon-left block clear (click)="signup()">
+          <button ion-button icon-left block clear *ngIf="buttonVisible" (click)="signup()">
             <ion-icon name="person-add"></ion-icon>
             Criar Conta
           </button>

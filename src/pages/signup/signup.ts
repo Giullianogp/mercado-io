@@ -1,3 +1,4 @@
+import { HomePage } from './../home/home';
 import { AuthService } from './../../services/auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -34,7 +35,7 @@ export class SignupPage {
 			password: data.password
 		};
 		this.auth.signUp(credentials).then(
-			() => this.navCtrl.setRoot("HomePage"),
+			() => this.navCtrl.setRoot(HomePage),
 			error => this.signupError = error.message
 		);
   }
