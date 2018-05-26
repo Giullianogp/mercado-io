@@ -32,6 +32,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     LottieAnimationViewModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule.enablePersistence(),
     AngularFirestoreModule
   ],
   bootstrap: [IonicApp],

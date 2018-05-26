@@ -3,7 +3,7 @@ import { HomePage } from './../home/home';
 import { AuthService } from './../../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {  NavController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -12,7 +12,6 @@ import { IonicPage, NavController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
 	selector: 'page-login',
 	templateUrl: 'login.html',
