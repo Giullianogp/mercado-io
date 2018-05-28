@@ -1,9 +1,8 @@
-import { LottieAnimationViewModule } from 'ng-lottie';
 import { HomePage } from './../home/home';
 import { AuthService } from './../../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import {  NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,19 +18,13 @@ import {  NavController } from 'ionic-angular';
 export class LoginPage {
 
 	lottieConfig: any;
-
 	loginForm: FormGroup;
 	loginError: string;
-
-	buttonVisible: boolean = true;
 
 	constructor(
 		private navCtrl: NavController,
 		private auth: AuthService,
-		fb: FormBuilder
-	) {
-		
-		LottieAnimationViewModule.forRoot();
+		fb: FormBuilder) {
 
 		this.loginForm = fb.group({
 			email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -50,10 +43,11 @@ export class LoginPage {
 			email: data.email,
 			password: data.password
 		};
+
 		this.auth.signInWithEmail(credentials)
 			.then(
 				() => this.navCtrl.setRoot(HomePage),
-				error => this.loginError = error.message
+				error => { this.loginError = error.message; }
 			);
 	}
 
@@ -62,24 +56,10 @@ export class LoginPage {
 	}
 
 	loginWithGoogle() {
-
-
 		this.auth.signInWithGoogle()
 			.then(
 				() => { this.navCtrl.setRoot(HomePage); },
 				error => console.log(error.message)
 			);
 	}
-
-	loading(carregando: boolean) {
-		this.buttonVisible = !carregando;
-
-		this.lottieConfig = {
-      path: '../assets/lineloading.json',
-      autoplay: true,
-      loop: true
-    }
-
-	}
-
 }

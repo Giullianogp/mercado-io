@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Produto } from './../../Models/Produto';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -18,6 +19,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ProdutoPage {
 
+  user: any;
   formProduto: FormGroup;
 
   produto: Produto;
@@ -28,7 +30,9 @@ export class ProdutoPage {
   regexQuantidade = /^\d+$/;
   regexValor = /(^\d*\.?\d*[1-9]+\d*$)|(^[1-9]+\d*\.\d*$)/;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private afs: AngularFirestore) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private afs: AngularFirestore, private auth: AuthService) {
+
+    this.user = this.auth.getUser();
 
     this.formProduto = formBuilder.group({
       descricao: ['', Validators.required],
@@ -38,13 +42,10 @@ export class ProdutoPage {
 
     if (this.navParams.data.produto) {
       this.produto = this.navParams.data.produto;
-
       this.quantidade = this.produto.quantidade;
       this.valor = this.produto.valor;
       this.descricao = this.produto.descricao;
     }
-
-
   }
 
   ionViewDidLoad() {
@@ -71,7 +72,8 @@ export class ProdutoPage {
       let produto = {
         descricao: this.formProduto.value.descricao,
         quantidade: this.formProduto.value.quantidade,
-        valor: this.formProduto.value.valor
+        valor: this.formProduto.value.valor,
+        userId: this.user.uid,
       }
 
       this.afs.collection<Produto>('produtos').add(produto)

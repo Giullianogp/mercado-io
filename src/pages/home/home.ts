@@ -13,15 +13,17 @@ export class HomePage {
 
   produtosCollection: AngularFirestoreCollection<Produto>;
   produtos: Produto[];
-
+  user: any;
   valorTotal: number = 0;
   saldo: number = 0;
 
-
-  constructor(public navCtrl: NavController, private afs: AngularFirestore, private auth: AuthService) { }
+  constructor(public navCtrl: NavController, private afs: AngularFirestore, private auth: AuthService) {
+    this.user = auth.getUser();
+  }
 
   ionViewDidEnter() {
-    this.produtosCollection = this.afs.collection<Produto>('produtos', ref => ref.orderBy('descricao'));
+
+    this.produtosCollection = this.afs.collection<Produto>('produtos', ref => ref.where("userId", "==", this.user.uid));//.orderBy('descricao')
     this.produtosCollection.snapshotChanges().subscribe(listaProduto => {
       this.valorTotal = 0;
       this.produtos = listaProduto.map(item => {
@@ -30,7 +32,8 @@ export class HomePage {
           descricao: item.payload.doc.data().descricao,
           valor: item.payload.doc.data().valor,
           quantidade: item.payload.doc.data().quantidade,
-          id: item.payload.doc.id
+          userId: item.payload.doc.data().userId,
+          id: item.payload.doc.id,
         }
       })
     })
@@ -51,7 +54,11 @@ export class HomePage {
   }
 
   limparLista() {
-
+    this.produtos.forEach(prod => {
+      this.afs.doc(`produtos/${prod.id}`).delete()
+        .then(() => console.log("Produto eliminado"))
+        .catch(err => console.error(err));
+    })
   }
 
   logOut() {

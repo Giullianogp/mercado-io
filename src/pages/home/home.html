@@ -12,7 +12,7 @@
       </button>
     </ion-buttons>
     <ion-title>
-      Ionic Blank
+      Lista de Produtos
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -22,7 +22,7 @@
     <ion-item-sliding *ngFor="let produto of produtos">
       <ion-item>
         <h1>{{produto.descricao}}</h1>
-        <p>Unitário: {{produto.valor | currency:'R$' }}</p>
+        <p>Qtd: {{produto.quantidade}} Unit: {{produto.valor | currency:'R$' }}</p>
         <p class="total" item-end color="secondary">{{produto.valor * produto.quantidade | currency:'R$' }}</p>
       </ion-item>
       <ion-item-options side="right">
