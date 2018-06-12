@@ -1,3 +1,18 @@
 page-login {
-   
+    ion-content {
+        background-image: url('../../assets/imgs/unsplash.jpg');
+        -webkit-background-image: url('../../assets/imgs/unsplash.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+      }
+      .login__fundo {
+        background-color: white;
+        margin: 5em 2em 2em 2em;
+        height: 50%;
+        padding-top: 4em;
+        border-radius: 10px;
+      }
+      .scroll-content {
+          padding: 0px !important;
+      }
 } 

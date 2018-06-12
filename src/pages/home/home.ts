@@ -22,21 +22,22 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-
-    this.produtosCollection = this.afs.collection<Produto>('produtos', ref => ref.where("userId", "==", this.user.uid));//.orderBy('descricao')
-    this.produtosCollection.snapshotChanges().subscribe(listaProduto => {
-      this.valorTotal = 0;
-      this.produtos = listaProduto.map(item => {
-        this.valorTotal += item.payload.doc.data().valor * item.payload.doc.data().quantidade;
-        return {
-          descricao: item.payload.doc.data().descricao,
-          valor: item.payload.doc.data().valor,
-          quantidade: item.payload.doc.data().quantidade,
-          userId: item.payload.doc.data().userId,
-          id: item.payload.doc.id,
-        }
+    if (this.user) {
+      this.produtosCollection = this.afs.collection<Produto>('produtos', ref => ref.where("userId", "==", this.user.uid));
+      this.produtosCollection.snapshotChanges().subscribe(listaProduto => {
+        this.valorTotal = 0;
+        this.produtos = listaProduto.map(item => {
+          this.valorTotal += item.payload.doc.data().valor * item.payload.doc.data().quantidade;
+          return {
+            descricao: item.payload.doc.data().descricao,
+            valor: item.payload.doc.data().valor,
+            quantidade: item.payload.doc.data().quantidade,
+            userId: item.payload.doc.data().userId,
+            id: item.payload.doc.id,
+          }
+        })
       })
-    })
+    }
   }
 
   itemSelected(produto: Produto) {

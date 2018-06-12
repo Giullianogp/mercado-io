@@ -1,28 +1,29 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Login - Mercado</ion-title>
+    <ion-title>Criar Conta</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
+  <div>
+    <form (ngSubmit)="signup()" [formGroup]="form">
+      <ion-list inset>
 
-  <form (ngSubmit)="signup()" [formGroup]="form">
-    <ion-list inset>
+        <ion-item>
+          <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-      </ion-item>
+      </ion-list>
 
-    </ion-list>
+      <div padding-horizontal>
+        <div class="form-error">{{signupError}}</div>
 
-    <div padding-horizontal>
-      <div class="form-error">{{signupError}}</div>
-
-      <button ion-button full type="submit" color="secondary" [disabled]="!form.valid">Sign up</button>
-    </div>
-  </form>
+        <button ion-button full type="submit" color="secondary" [disabled]="!form.valid">Sign up</button>
+      </div>
+    </form>
+  </div>
 </ion-content>

@@ -4,7 +4,7 @@
   "start_url": "index.html",
   "display": "fullscreen",
   "icons": [{
-    "src": "assets/imgs/market.png",
+    "src": "assets/imgs/food.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
