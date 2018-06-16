@@ -2,12 +2,12 @@
   "name": "Mercado",
   "short_name": "Mercado",
   "start_url": "index.html",
-  "display": "fullscreen",
+  "display": "standalone",
   "icons": [{
     "src": "assets/imgs/food.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
-  "background_color": "#393E46",
-  "theme_color": "#393E46"
+  "background_color": "#232931",
+  "theme_color": "#393e46"
 }

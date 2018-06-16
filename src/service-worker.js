@@ -8,7 +8,7 @@
 importScripts('./build/sw-toolbox.js');
 
 self.toolbox.options.cache = {
-  name: 'ionic-cache_v5'
+  name: 'ionic-cache_v7'
 };
 
 // pre-cache our key assets
