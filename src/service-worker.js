@@ -3,12 +3,11 @@
  * more info on how to use sw-toolbox to custom configure your service worker.
  */
 
-
 'use strict';
 importScripts('./build/sw-toolbox.js');
 
 self.toolbox.options.cache = {
-  name: 'ionic-cache_v7'
+  name: 'mercado_pwa_v2'
 };
 
 // pre-cache our key assets
